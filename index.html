@@ -275,20 +275,48 @@
         escolateologicavance@gmail.com
     </footer>
 </div>
-
 <script>
     function enviarWhatsApp() {
+        // Coletando todos os campos
         const nome = document.getElementById('nome').value;
         const valor = document.getElementById('valor_selecionado').value;
+        const zap_aluno = document.getElementById('tel').value;
+        const cpf = document.getElementById('cpf').value;
+        const cidade = document.getElementById('cidade').value;
+        const igreja = document.getElementById('igreja_local').value;
+        const pastor = document.getElementById('nome_pastor').value;
+        const b_aguas = document.getElementById('batismo_aguas').value;
+        const b_esp = document.getElementById('batismo_espirito').value;
+        const encargo = document.getElementById('tem_encargo').value;
+        const qual_encargo = document.getElementById('qual_encargo').value;
         const aceite = document.getElementById('aceite').checked;
 
+        // Validação básica
         if(!nome || !valor || !aceite) {
-            alert("Por favor, preencha os dados obrigatórios e aceite os termos.");
+            alert("Por favor, preencha o nome, selecione o valor e aceite os termos.");
             return;
         }
 
-        const msg = `*FICHA DE MATRÍCULA - HAZAQ*%0A*Nome:* ${nome}%0A*Plano:* ${valor}%0A*Assinado Digitalmente.*`;
-        window.open(`https://wa.me/5566984666186?text=${msg}`, '_blank');
+        // Montando a mensagem completa
+        const mensagem = 
+            `*FICHA DE MATRÍCULA - HAZAQ*%0A%0A` +
+            `*1. DADOS PESSOAIS*%0A` +
+            `*Nome:* ${nome}%0A` +
+            `*WhatsApp:* ${zap_aluno}%0A` +
+            `*CPF:* ${cpf}%0A` +
+            `*Cidade:* ${cidade}%0A%0A` +
+            `*2. PERFIL ECLESIÁSTICO*%0A` +
+            `*Igreja:* ${igreja}%0A` +
+            `*Pastor:* ${pastor}%0A` +
+            `*Batismo Águas:* ${b_aguas}%0A` +
+            `*Batismo Esp:* ${b_esp}%0A` +
+            `*Encargo:* ${encargo} (${qual_encargo})%0A%0A` +
+            `*3. FINANCEIRO*%0A` +
+            `*Plano:* ${valor}%0A%0A` +
+            `*Assinado Digitalmente pelo Aluno.*`;
+
+        // Abre o WhatsApp com a mensagem completa
+        window.open(`https://wa.me/5566984666186?text=${mensagem}`, '_blank');
     }
 </script>
 
